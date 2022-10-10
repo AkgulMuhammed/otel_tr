@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.lime,
       ),
       debugShowCheckedModeBanner: false,
-      home: const    hotelHomePage(),
+      home: const    HotelStartPage(),
     );
   }
 }
