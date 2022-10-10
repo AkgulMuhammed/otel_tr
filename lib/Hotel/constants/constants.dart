@@ -23,7 +23,7 @@ class HotelConstants {
   static const cardAdvertPriceThree ='₺ 750.00';
   static const cardAdvertPriceFour ='₺ 599.00';
 
- static const cardAdvertTime =' / Gece';
+ static const cardAdvertTime ='  Gece';
   
 
 

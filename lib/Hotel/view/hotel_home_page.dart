@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:otelcim/Hotel/view/detail_page.dart';
 import 'package:otelcim/Hotel/widgets/text_small_bold.dart';
 
 import '../constants/constants.dart';
@@ -33,15 +34,12 @@ class hotelHomePage extends StatelessWidget {
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
-                
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: const [
-                  
                   CardDesing(
                       image: HotelConstants.image_advert_one,
                       rowTitle: HotelConstants.AdvertHotelTitleOne,
                       columTitle: HotelConstants.advertHotelLocationOne),
-                      
                   HotelConstants.sizedBoxWidht10,
                   CardDesing(
                       image: HotelConstants.image_advert_two,
@@ -68,10 +66,30 @@ class hotelHomePage extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: const [
-                    columnGeneralCard(image: HotelConstants.image_advert_one, hotelName: HotelConstants.AdvertHotelTitleOne, hotelLacation: HotelConstants.advertHotelLocationOne, hotelPoint: HotelConstants.cardAdvertPointOne, hotelPrice: HotelConstants.cardAdvertPriceOne),
-                    columnGeneralCard(image: HotelConstants.image_advert_two, hotelName: HotelConstants.AdvertHotelTitleTwo, hotelLacation: HotelConstants.advertHotelLocationTwo, hotelPoint: HotelConstants.cardAdvertPointTwo, hotelPrice: HotelConstants.cardAdvertPriceTwo),                     
-                    columnGeneralCard(image: HotelConstants.image_advert_three, hotelName: HotelConstants.AdvertHotelTitleThree, hotelLacation: HotelConstants.advertHotelLocationThree, hotelPoint: HotelConstants.cardAdvertPointThree, hotelPrice: HotelConstants.cardAdvertPriceThree),
-                    columnGeneralCard(image: HotelConstants.image_advert_four, hotelName: HotelConstants.AdvertHotelTitleFour, hotelLacation: HotelConstants.advertHotelLocationFour, hotelPoint: HotelConstants.cardAdvertPointFour, hotelPrice: HotelConstants.cardAdvertPriceFour),
+                    columnGeneralCard(
+                        image: HotelConstants.image_advert_one,
+                        hotelName: HotelConstants.AdvertHotelTitleOne,
+                        hotelLacation: HotelConstants.advertHotelLocationOne,
+                        hotelPoint: HotelConstants.cardAdvertPointOne,
+                        hotelPrice: HotelConstants.cardAdvertPriceOne),
+                    columnGeneralCard(
+                        image: HotelConstants.image_advert_two,
+                        hotelName: HotelConstants.AdvertHotelTitleTwo,
+                        hotelLacation: HotelConstants.advertHotelLocationTwo,
+                        hotelPoint: HotelConstants.cardAdvertPointTwo,
+                        hotelPrice: HotelConstants.cardAdvertPriceTwo),
+                    columnGeneralCard(
+                        image: HotelConstants.image_advert_three,
+                        hotelName: HotelConstants.AdvertHotelTitleThree,
+                        hotelLacation: HotelConstants.advertHotelLocationThree,
+                        hotelPoint: HotelConstants.cardAdvertPointThree,
+                        hotelPrice: HotelConstants.cardAdvertPriceThree),
+                    columnGeneralCard(
+                        image: HotelConstants.image_advert_four,
+                        hotelName: HotelConstants.AdvertHotelTitleFour,
+                        hotelLacation: HotelConstants.advertHotelLocationFour,
+                        hotelPoint: HotelConstants.cardAdvertPointFour,
+                        hotelPrice: HotelConstants.cardAdvertPriceFour),
                   ],
                 ),
               ),
@@ -163,34 +181,41 @@ class columnGeneralCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      shape: RoundedRectangleBorder(
-          borderRadius: HotelConstants.borderRadiusCircular20),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(flex: 2, child: cardClipRRectImage(image: image)),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Expanded(
-                flex: 6,
-                child: Padding(
-                  padding: HotelConstants.paddingGeneral12,
-                  child: Column(
-                    children: [
-                      cardRightTextIcon(text: hotelName),
-                      HotelConstants.sizedBoxHeigt5,
-                      cardRightLocationText(text: hotelLacation),
-                      HotelConstants.sizedBoxHeigt10,
-                      cardRigthStarText(text: hotelPoint),
-                      HotelConstants.sizedBoxHeigt10,
-                      cardRightPriceText(price: hotelPrice),
-                    ],
-                  ),
-                )),
-          ),
-        ],
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => DetailPage(),
+        ));
+      },
+      child: Card(
+        elevation: 5,
+        shape: RoundedRectangleBorder(
+            borderRadius: HotelConstants.borderRadiusCircular20),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(flex: 2, child: cardClipRRectImage(image: image)),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Expanded(
+                  flex: 6,
+                  child: Padding(
+                    padding: HotelConstants.paddingGeneral12,
+                    child: Column(
+                      children: [
+                        cardRightTextIcon(text: hotelName),
+                        HotelConstants.sizedBoxHeigt5,
+                        cardRightLocationText(text: hotelLacation),
+                        HotelConstants.sizedBoxHeigt10,
+                        cardRigthStarText(text: hotelPoint),
+                        HotelConstants.sizedBoxHeigt10,
+                        cardRightPriceText(price: hotelPrice),
+                      ],
+                    ),
+                  )),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -207,16 +232,15 @@ class cardClipRRectImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      
       borderRadius: const BorderRadius.only(
-        bottomRight:Radius.circular(50),
+        bottomRight: Radius.circular(50),
         topRight: HotelConstants.radius10,
       ),
       child: Image.asset(
         image,
         fit: BoxFit.cover,
         height: MediaQuery.of(context).size.height / 5.7,
-        width: MediaQuery.of(context).size.height/10,
+        width: MediaQuery.of(context).size.height / 10,
       ),
     );
   }
@@ -377,13 +401,17 @@ class CardDesing extends StatelessWidget {
   final String columTitle;
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        RowClipRRectAdvertImage(image: image),
-        const RowPositionFlag(),
-        RowPositionText(text: rowTitle),
-        RowPositinedLocationText(text: columTitle)
-      ],
+    return GestureDetector(onTap: () {
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => DetailPage(),));
+    },
+      child: Stack(
+        children: [
+          RowClipRRectAdvertImage(image: image),
+          const RowPositionFlag(),
+          RowPositionText(text: rowTitle),
+          RowPositinedLocationText(text: columTitle)
+        ],
+      ),
     );
   }
 }

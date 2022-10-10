@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:otelcim/Hotel/view/detail_page.dart';
 import 'package:otelcim/Hotel/view/hotel_home_page.dart';
 import 'Hotel/view/hotel_start_page.dart';
 
@@ -12,12 +13,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+     
       theme: ThemeData(
         primarySwatch: Colors.lime,
       ),
       debugShowCheckedModeBanner: false,
-      home: const HotelStartPage(),
+      home: const    hotelHomePage(),
     );
   }
 }
